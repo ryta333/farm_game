@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://trbujkmdmchn"]
 
 [ext_resource type="Texture2D" uid="uid://doxybuahjp5d7" path="res://assets/objects/basic_grass_biom_things.png" id="1_70ahf"]
+[ext_resource type="Shader" uid="uid://3plhohg70yjm" path="res://shader/shake.gdshader" id="1_bntui"]
 [ext_resource type="PackedScene" uid="uid://1ssmexrwlp1a" path="res://scenes/components/hurt_component.tscn" id="2_aw33s"]
 [ext_resource type="Script" uid="uid://cb45splhi7cm0" path="res://scenes/objects/rocks/rock.gd" id="2_f5itc"]
 [ext_resource type="PackedScene" uid="uid://3d7hvibwfvcv" path="res://scenes/components/damage_component.tscn" id="4_f5itc"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_msy0l"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m3iwm"]
+resource_local_to_scene = true
+shader = ExtResource("1_bntui")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ujo6l"]
 atlas = ExtResource("1_70ahf")
@@ -18,7 +23,7 @@ radius = 7.0
 size = Vector2(14, 11.5)
 
 [node name="Rock" type="Sprite2D" unique_id=1894285707]
-material = SubResource("ShaderMaterial_msy0l")
+material = SubResource("ShaderMaterial_m3iwm")
 texture = SubResource("AtlasTexture_ujo6l")
 script = ExtResource("2_f5itc")
 
