@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://s3oteybiryyk"]
 
-[ext_resource type="Script" uid="uid://c57cwqjfhynvm" path="res://charaters/player/player.gd" id="1_gbrpj"]
+[ext_resource type="Script" uid="uid://c57cwqjfhynvm" path="res://scenes/charaters/player/player.gd" id="1_gbrpj"]
 [ext_resource type="Texture2D" uid="uid://bmeegd53ugnrq" path="res://assets/charaters/basic_charakter_actions.png" id="1_t4chs"]
 [ext_resource type="Texture2D" uid="uid://unixwh1vn4c0" path="res://assets/charaters/basic_charakter_spritesheet.png" id="2_gbrpj"]
 [ext_resource type="Script" uid="uid://1hw5l5inxtot" path="res://scripts/state_machine/node_state_machine.gd" id="3_spndb"]
-[ext_resource type="Script" uid="uid://djrfeiwkwnwxf" path="res://charaters/player/idle_state.gd" id="4_spndb"]
-[ext_resource type="Script" uid="uid://btyoidc6iqwgq" path="res://charaters/player/walk_state.gd" id="5_x7ijy"]
-[ext_resource type="Script" uid="uid://dm7faach6virn" path="res://charaters/player/chopping_state.gd" id="7_jcpde"]
-[ext_resource type="Script" uid="uid://dvp6gf54kywp2" path="res://charaters/player/tilling_state.gd" id="8_bik3v"]
-[ext_resource type="Script" uid="uid://d07unfy57q03l" path="res://charaters/player/watering_state.gd" id="9_cpvpp"]
+[ext_resource type="Script" uid="uid://djrfeiwkwnwxf" path="res://scenes/charaters/player/idle_state.gd" id="4_spndb"]
+[ext_resource type="Script" uid="uid://btyoidc6iqwgq" path="res://scenes/charaters/player/walk_state.gd" id="5_x7ijy"]
+[ext_resource type="Script" uid="uid://dm7faach6virn" path="res://scenes/charaters/player/chopping_state.gd" id="7_jcpde"]
+[ext_resource type="Script" uid="uid://dvp6gf54kywp2" path="res://scenes/charaters/player/tilling_state.gd" id="8_bik3v"]
+[ext_resource type="Script" uid="uid://d07unfy57q03l" path="res://scenes/charaters/player/watering_state.gd" id="9_cpvpp"]
+[ext_resource type="PackedScene" uid="uid://fx80ic5db3fu" path="res://scenes/components/hit_component.tscn" id="10_tubid"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_spndb"]
 atlas = ExtResource("1_t4chs")
@@ -394,20 +395,26 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s58n6"]
-radius = 8.0
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ujo6l"]
+radius = 3.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1416812229]
+collision_layer = 2
 script = ExtResource("1_gbrpj")
 current_tool = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1012881524]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_ujo6l")
-animation = &"tilling_right"
+animation = &"chopping_back"
 autoplay = "idle_front"
+frame = 1
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1155520112]
-position = Vector2(0, -8)
+position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_s58n6")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1608738857 node_paths=PackedStringArray("initial_node_state")]
@@ -425,10 +432,11 @@ player = NodePath("../..")
 animiated_sprite_2d = NodePath("../../AnimatedSprite2D")
 speed = 50
 
-[node name="Chopping" type="Node" parent="StateMachine" unique_id=168622191 node_paths=PackedStringArray("player", "animated_sprited_2d")]
+[node name="Chopping" type="Node" parent="StateMachine" unique_id=168622191 node_paths=PackedStringArray("player", "animated_sprited_2d", "hit_component_collision_shape")]
 script = ExtResource("7_jcpde")
 player = NodePath("../..")
 animated_sprited_2d = NodePath("../../AnimatedSprite2D")
+hit_component_collision_shape = NodePath("../../HitComponent/HitComponentCollisionShape2D")
 
 [node name="Tilling" type="Node" parent="StateMachine" unique_id=522318485 node_paths=PackedStringArray("player", "animated_sprited_2d")]
 script = ExtResource("8_bik3v")
@@ -439,3 +447,10 @@ animated_sprited_2d = NodePath("../../AnimatedSprite2D")
 script = ExtResource("9_cpvpp")
 player = NodePath("../..")
 animated_sprited_2d = NodePath("../../AnimatedSprite2D")
+
+[node name="HitComponent" parent="." unique_id=2015003156 instance=ExtResource("10_tubid")]
+
+[node name="HitComponentCollisionShape2D" type="CollisionShape2D" parent="HitComponent" unique_id=1855105775]
+position = Vector2(3, -20)
+shape = SubResource("CircleShape2D_ujo6l")
+debug_color = Color(0.94689137, 0.14654124, 0.44538587, 0.41960785)
