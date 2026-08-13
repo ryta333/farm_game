@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://s3oteybiryyk"]
 
-[ext_resource type="Script" uid="uid://c57cwqjfhynvm" path="res://scenes/charaters/player/player.gd" id="1_gbrpj"]
+[ext_resource type="Script" uid="uid://c57cwqjfhynvm" path="res://scenes/characters/player/player.gd" id="1_gbrpj"]
 [ext_resource type="Texture2D" uid="uid://bmeegd53ugnrq" path="res://assets/charaters/basic_charakter_actions.png" id="1_t4chs"]
 [ext_resource type="Texture2D" uid="uid://unixwh1vn4c0" path="res://assets/charaters/basic_charakter_spritesheet.png" id="2_gbrpj"]
 [ext_resource type="Script" uid="uid://1hw5l5inxtot" path="res://scripts/state_machine/node_state_machine.gd" id="3_spndb"]
-[ext_resource type="Script" uid="uid://djrfeiwkwnwxf" path="res://scenes/charaters/player/idle_state.gd" id="4_spndb"]
-[ext_resource type="Script" uid="uid://btyoidc6iqwgq" path="res://scenes/charaters/player/walk_state.gd" id="5_x7ijy"]
-[ext_resource type="Script" uid="uid://dm7faach6virn" path="res://scenes/charaters/player/chopping_state.gd" id="7_jcpde"]
-[ext_resource type="Script" uid="uid://dvp6gf54kywp2" path="res://scenes/charaters/player/tilling_state.gd" id="8_bik3v"]
-[ext_resource type="Script" uid="uid://d07unfy57q03l" path="res://scenes/charaters/player/watering_state.gd" id="9_cpvpp"]
+[ext_resource type="Script" uid="uid://djrfeiwkwnwxf" path="res://scenes/characters/player/idle_state.gd" id="4_spndb"]
+[ext_resource type="Script" uid="uid://btyoidc6iqwgq" path="res://scenes/characters/player/walk_state.gd" id="5_x7ijy"]
+[ext_resource type="Script" uid="uid://dm7faach6virn" path="res://scenes/characters/player/chopping_state.gd" id="7_jcpde"]
+[ext_resource type="Script" uid="uid://dvp6gf54kywp2" path="res://scenes/characters/player/tilling_state.gd" id="8_bik3v"]
+[ext_resource type="Script" uid="uid://d07unfy57q03l" path="res://scenes/characters/player/watering_state.gd" id="9_cpvpp"]
 [ext_resource type="PackedScene" uid="uid://fx80ic5db3fu" path="res://scenes/components/hit_component.tscn" id="10_tubid"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_spndb"]
@@ -454,4 +454,5 @@ current_tool = 1
 [node name="HitComponentCollisionShape2D" type="CollisionShape2D" parent="HitComponent" unique_id=1855105775]
 position = Vector2(3, -20)
 shape = SubResource("CircleShape2D_ujo6l")
+disabled = true
 debug_color = Color(0.94689137, 0.14654124, 0.44538587, 0.41960785)

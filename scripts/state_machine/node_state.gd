@@ -7,7 +7,7 @@ signal transition
 func _on_process(_delta: float) -> void:
 	pass
 	
-func _on_physyics_process(_dekta: float) -> void:
+func _on_physysics_process(_dekta: float) -> void:
 	pass
 
 func _on_next_transitions() -> void:

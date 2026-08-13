@@ -4,7 +4,7 @@ extends NodeState
 @export var animated_sprited_2d: AnimatedSprite2D
 @export var hit_component_collision_shape: CollisionShape2D
 
-func ready() -> void:
+func _ready() -> void:
 	hit_component_collision_shape.disabled = true
 	hit_component_collision_shape.position = Vector2(0, 0)
 
